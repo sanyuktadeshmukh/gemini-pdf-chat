@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with PDF using Gemini</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="file"], input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #e9f7ef;
+            border: 1px solid #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .answer {
+            background-color: #e8f4fc;
+            border: 1px solid #b3d8f5;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chat with PDF using Gemini 💁</h1>
+
+        <!-- Messages -->
+        {% if success %}
+            <div class="message success">{{ success }}</div>
+        {% endif %}
+        {% if error %}
+            <div class="message error">{{ error }}</div>
+        {% endif %}
+        {% if answer %}
+            <div class="message answer">{{ answer }}</div>
+        {% endif %}
+
+        <!-- PDF Upload Form -->
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="pdf_files">Upload PDF Files:</label>
+            <input type="file" id="pdf_files" name="pdf_files" multiple required>
+            <button type="submit">Submit & Process</button>
+        </form>
+
+        <!-- Question Form -->
+        <form action="/ask" method="post">
+            <label for="question">Ask a Question:</label>
+            <input type="text" id="question" name="question" placeholder="Enter your question" required>
+            <button type="submit">Ask</button>
+        </form>
+    </div>
+</body>
+</html>
