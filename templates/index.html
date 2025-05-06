@@ -32,7 +32,7 @@
             font-weight: bold;
         }
         input[type="file"], input[type="text"], button {
-            width: 100%;
+            width: 96%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
@@ -43,9 +43,21 @@
             color: white;
             border: none;
             cursor: pointer;
+            width: 100%;
         }
         button:hover {
             background-color: #0056b3;
+        }
+        .clear-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .clear-button:hover {
+            background-color: #d32f2f;
         }
         .message {
             margin-bottom: 20px;
@@ -71,7 +83,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Chat with PDF using Gemini 💁</h1>
+        <h1>Multi Domain Expert System</h1>
 
         <!-- Messages -->
         {% if success %}
@@ -96,6 +108,11 @@
             <label for="question">Ask a Question:</label>
             <input type="text" id="question" name="question" placeholder="Enter your question" required>
             <button type="submit">Ask</button>
+        </form>
+
+        <!-- Clear Button (No form submission) -->
+        <form action="/delete" method="post">
+            <button type="submit" class="clear-button">Clear</button>
         </form>
     </div>
 </body>
